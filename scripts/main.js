@@ -22,6 +22,13 @@ function initBuyButtons() {
     }
 }
 function buyProduct() {
+    var prod = getProduct();
+    saveProductToCart(prod);
+}
+/**
+ * Get currently selected product instance
+ */
+function getProduct() {
     var currBuyBtn = this;
     console.log("The buy button that was clicked:");
     console.log(currBuyBtn);
@@ -35,6 +42,9 @@ function buyProduct() {
     prod.price = parseFloat(price);
     prod.description = currProdDiv.querySelector("div.description").innerHTML;
     console.log(prod);
+    return prod;
+}
+function saveProductToCart(p) {
 }
 /**
  * Represents a single shopping cart item.
