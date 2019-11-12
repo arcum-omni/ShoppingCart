@@ -4,6 +4,11 @@ body{
     background-color: lightgrey;
 }
 
+div#copyright{
+    font-size: 12px;
+    text-align: center;
+}
+
 div#shopping-cart{
     position: fixed;
     top: 1em;
@@ -11,15 +16,11 @@ div#shopping-cart{
     /* border: 3px black; */
 }
 
-div#copyright{
-    font-size: 12px;
-    text-align: center;
-}
-
 div.product{
     position: relative;
     border: 1px solid black;
     padding: .5em;
+    margin: .5em;
     overflow: hidden;
 }
 
