@@ -19,6 +19,7 @@ div#shopping-cart{
 div.product{
     position: relative;
     border: 1px solid black;
+    border-radius: 10px;
     padding: .5em;
     margin: .5em;
     overflow: hidden;
@@ -35,12 +36,12 @@ div.buy, div.price{
 
 div.buy{ /* div.product > div.buy */
     top: 1em;
-    border: 1px solid black;
+    /* border: 1px solid black; */
 }
 
 div.price{
     bottom: 1em;
-    border: 1px solid black;
+    /* border: 1px solid black; */
 }
 
 img{
