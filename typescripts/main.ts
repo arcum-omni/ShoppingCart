@@ -1,6 +1,39 @@
 window.onload = function(){
     getYear();
     initBuyButtons();
+    displayItemQuantity();
+
+    let cartIcon = <HTMLElement>document.querySelector("#shopping-cart");
+    cartIcon.onclick = showCartContents;
+}
+
+function showCartContents(){
+    let displayDiv = document.querySelector("#display-cart");
+    displayDiv.innerHTML = "";
+
+    let allProds = ProductStorage.getAllProducts();
+
+    for(let i=0; i<allProds.length; i++){
+        const prod = allProds[i];
+        /*
+            <div class="display-product">
+                <h2>Widget - $9.99</h2>
+                <p>description</p>
+            </div>
+        */
+        let prodDiv = document.createElement("div");
+        prodDiv.classList.add("display-product");
+        
+        let h2 = document.createElement("h2");
+        h2.innerHTML = prod.title + " - " + "$" + prod.price;
+        prodDiv.appendChild(h2);
+        //displayDiv.appendChild(prodDiv);
+        
+        let p = document.createElement("p");
+        p.innerHTML = `${prod.description}`; // js template literal
+        prodDiv.appendChild(p);
+        displayDiv.appendChild(prodDiv);
+    }
 }
 
 /**
@@ -25,21 +58,30 @@ function initBuyButtons() {
 }
 
 function buyProduct(){
-    let prod = getProduct();
+    let currBtn = this;
+    let prod = getProduct(currBtn);
 
     saveProductToCart(prod);
+
+    displayItemQuantity();
+}
+
+function displayItemQuantity(){
+    let numItems = ProductStorage.getNumberOfProducts();
+    let cartSpan = document.querySelector("div#shopping-cart > span");
+    cartSpan.innerHTML = numItems.toString();
 }
 
 /**
  * Get currently selected product instance 
  */
-function getProduct() {
-    let currBuyBtn = <HTMLElement>this;
-        console.log("The buy button that was clicked:");
-        console.log(currBuyBtn);
+function getProduct(currBuyBtn:HTMLElement) {
+    console.log("The buy button that was clicked:");
+    console.log(currBuyBtn);
+
     let currProdDiv = currBuyBtn.parentElement;
-        console.log("The parent product div:");
-        console.log(currProdDiv);
+    console.log("The parent product div:");
+    console.log(currProdDiv);
     
     let prod = new Product();
     prod.title = currProdDiv.querySelector("div.title").innerHTML;
@@ -54,7 +96,8 @@ function getProduct() {
 }
 
 function saveProductToCart(p:Product):Product[]{ // return an array of products
-
+    ProductStorage.addProduct(p);
+    return ProductStorage.getAllProducts();
 }
 
 
