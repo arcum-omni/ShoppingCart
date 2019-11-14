@@ -42,3 +42,7 @@ div.price{
     bottom: 1em;
     border: 1px solid black;
 }
+
+img{
+    margin-right: .5em;
+}
