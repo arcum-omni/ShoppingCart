@@ -17,21 +17,27 @@ function showCartContents(){
         const prod = allProds[i];
         /*
             <div class="display-product">
-                <h2>Widget - $9.99</h2>
+                <h2>Shopping Cart Contents</h2>
+                <h3>Widget - $9.99</h3>
                 <p>description</p>
             </div>
         */
         let prodDiv = document.createElement("div");
         prodDiv.classList.add("display-product");
-        
+
         let h2 = document.createElement("h2");
-        h2.innerHTML = prod.title + " - " + "$" + prod.price;
+        h2.innerHTML = "Item " + (i+1);
         prodDiv.appendChild(h2);
+        
+        let h3 = document.createElement("h3");
+        h3.innerHTML = prod.title + " - " + "$" + prod.price;
+        prodDiv.appendChild(h3);
         //displayDiv.appendChild(prodDiv);
         
         let p = document.createElement("p");
         p.innerHTML = `${prod.description}`; // js template literal
         prodDiv.appendChild(p);
+
         displayDiv.appendChild(prodDiv);
     }
 }
