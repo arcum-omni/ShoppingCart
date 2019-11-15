@@ -1,12 +1,13 @@
 body{
     width: 800px;
     margin: auto;
-    background-color: lightgrey;
+    background-image: linear-gradient(to right,red, yellow);
 }
 
 div#copyright{
-    font-size: 12px;
+    font-size: 14px;
     text-align: center;
+    margin-bottom: 1em;
 }
 
 div#shopping-cart{
@@ -23,6 +24,7 @@ div.product{
     padding: .5em;
     margin: .5em;
     overflow: hidden;
+    background-color: white;
 }
 
 div.product > img{
@@ -46,4 +48,16 @@ div.price{
 
 img{
     margin-right: .5em;
+}
+
+div.display-product > h2{
+    margin-bottom: 0px;
+}
+
+div.display-product > h3{
+    margin: 0px;
+}
+
+div.display-product > p{
+    margin-top: 0px;
 }
